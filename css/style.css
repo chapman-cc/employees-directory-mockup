@@ -104,3 +104,11 @@ body {
     border-radius: 10px;
     margin: 2em 0;
 }
+
+/** ------------------------------
+*  STATE STYLING
+------------------------------  */
+
+.card__hidden {
+    display: none;
+}
