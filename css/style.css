@@ -1,3 +1,7 @@
+/** ------------------------------
+*  BASE STYLING
+------------------------------  */
+
 *{
     box-sizing: border-box;
     transition: all 500ms;
@@ -8,9 +12,18 @@
     margin: 0 auto;
 }
 
+/** ------------------------------
+*  GRID STYLING
+------------------------------  */
+/** ------------------------------
+*  CARD STYLING
+------------------------------  */
+/** ------------------------------
+*  TEXT STYLING
+------------------------------  */
 .title {
     font-size: 1.2em;
-    font-family: Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    margin: 2em 0.5em 1em;
+/** ------------------------------
+*  IMG STYLING
+------------------------------  */
 }
