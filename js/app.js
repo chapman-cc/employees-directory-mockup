@@ -8,12 +8,12 @@ $(document).ready(function () {
         const employees = data.results;
         // console.log (employees);
         employees.forEach(employee => {
-            let $employeeTel = $("<p></p>").text(employee.cell);
+            let $employeeTel = $("<p></p>").addClass("card__employeeDetails").text(employee.cell);
             let location = employee.location.street + ", " + employee.location.city + ", " + employee.location.postcode;
-            let $employeeLocation = $("<p></p>").text(location);
+            let $employeeLocation = $("<p></p>").addClass("card__employeeDetails").text(location);
             
             let dob = employee.dob.date;
-            let $employeeBday = $("<p></p>").text(dob.slice(0, dob.indexOf("T")));
+            let $employeeBday = $("<p></p>").addClass("card__employeeDetails").text(dob.slice(0, dob.indexOf("T")));
 
             
             
@@ -25,7 +25,7 @@ $(document).ready(function () {
             // create employee email
             let $employeeEmail = $("<p></p>").addClass('card__employeeEmail').text(employee.email);
             // create employee location
-            let $employeeCity = $("<p></p>").addClass('card__employeeLocation').text(employee.location.city);
+            let $employeeCity = $("<p></p>").addClass('card__employeeDetails').text(employee.location.city);
             // create profile 
             let $cardProfile = $("<div></div>");
             $cardProfile.addClass('card__profile').append($employeeName).append($employeeEmail).append($employeeCity);
