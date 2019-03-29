@@ -29,7 +29,7 @@ $(document).ready(function () {
             })
 
             // create card
-            let $card = $("<div></div>").addClass("card");
+            let $card = $("<a></a>").addClass("card");
             $card.append($img).append($cardProfile);
 
             // append to directory
