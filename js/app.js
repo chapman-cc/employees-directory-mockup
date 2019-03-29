@@ -4,6 +4,8 @@ $(document).ready(function () {
 
     $.getJSON(randomUserAPI, data => {
 
+        const employees = data.results;
+
         employees.forEach(employee => {
             // create employee name title
             let fullName = employee.name.first + " " + employee.name.last;
