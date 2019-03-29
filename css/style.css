@@ -109,7 +109,7 @@ body {
 *  STATE STYLING
 ------------------------------  */
 
-.card__hidden {
+.card--hidden {
     display: none;
 }
 
