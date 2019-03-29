@@ -115,8 +115,7 @@ body {
 
 /* THE FOLLOWING CODE ONLY AFFECT .card--selected CLASS */
 .card--selected {
-    position: absolute;
-    top: 10vw;
+    position: relative;
     left: 0;
     right: 0;
     margin: 0 auto;
