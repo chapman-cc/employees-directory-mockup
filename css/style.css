@@ -98,13 +98,6 @@ body {
     width: 60%
 }
 
-.card__seperator {
-    background-color: grey;
-    height: 2px;
-    width: 80%;
-    border-radius: 10px;
-    margin: 2em 0;
-}
 
 /** ------------------------------
 *  STATE STYLING
@@ -123,8 +116,11 @@ body {
     
     display: flex; 
     flex-flow: column nowrap;
-
-    width: 30vw;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    width: 25vw;
+    height: auto;
     background-color: white;
     border: lightgrey 3px solid;
     border-radius: 20px;
@@ -134,17 +130,17 @@ body {
 
 .card--selected>img { /* TARGET <IMG> INSIDE */
     height: 100%;
-    width: 100%
+    width: 300px
 }
 .card--selected>div { /* TARGET <DIV> INSIDE */
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: center;
-
+    
     width: 100%;
     margin-top: 2em;
-
+    
 }
 .card--selected .card__seperator {
     background-color: grey;
@@ -160,6 +156,6 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-
+    
     background-color: rgba(119, 119, 119, 0.8);
 }
