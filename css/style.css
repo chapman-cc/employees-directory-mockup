@@ -3,6 +3,10 @@
     transition: all 500ms;
 }
 
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
 
 .title {
     font-size: 2em;
