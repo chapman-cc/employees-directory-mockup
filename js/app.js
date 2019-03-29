@@ -40,7 +40,7 @@ $(document).ready(function () {
             let $card = $("<a></a>").addClass("card");
             $card.append($img).append($cardProfile);
             // append to directory
-            $('.directory').append($card)
+            $('#directory').append($card)
         })
     }) // end of .getJSON
 }); // end of document ready 
