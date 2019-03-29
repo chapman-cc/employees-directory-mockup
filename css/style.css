@@ -112,3 +112,37 @@ body {
 .card__hidden {
     display: none;
 }
+
+/* THE FOLLOWING CODE ONLY AFFECT .card--selected CLASS */
+.card--selected {
+    position: absolute;
+    top: 10vw;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    
+    display: flex; 
+    flex-flow: column nowrap;
+
+    width: 30vw;
+    background-color: white;
+    border: lightgrey 3px solid;
+    border-radius: 20px;
+    padding: 3em;
+    
+}
+
+.card--selected>img { /* TARGET <IMG> INSIDE */
+    height: 100%;
+    width: 100%
+}
+.card--selected>div { /* TARGET <DIV> INSIDE */
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    margin-top: 2em;
+
+}
