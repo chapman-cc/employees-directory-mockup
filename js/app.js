@@ -14,7 +14,7 @@ $(document).ready(function () {
             // create employee location
             let $employeeCity = $("<p></p>").addClass('card__employeeLocation').text(employee.location.city);
             // create profile 
-            let $cardProfile = $("<p></p>");
+            let $cardProfile = $("<div></div>");
             $cardProfile.addClass('card__profile').append($employeeName).append($employeeEmail).append($employeeCity);
             // create img
             let $img = $("<img>").attr({
