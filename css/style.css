@@ -54,12 +54,12 @@ body {
 .title,
 .card__employeeName,
 .card__employeeEmail,
-.card__employeeLocation {
+.card__employeeDetails {
     font-family: Helvetica, Arial, sans-serif;
 }
 
 .card__employeeName, 
-.card__employeeLocation {
+.card__employeeDetails {
     text-transform: capitalize;
 }
 
@@ -77,7 +77,7 @@ body {
 }
 
 .card__employeeEmail,
-.card__employeeLocation {
+.card__employeeDetails {
     font-size: 0.8em;
     color: grey;
     margin-bottom: 0.5em;
