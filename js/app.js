@@ -32,7 +32,7 @@ $(document).ready(function () {
             $cardProfile.append($cardSeperator).append($employeeTel).append($employeeLocation).append($employeeBday);        // toggle this
             // create img
             let $img = $("<img>").attr({
-                src: employee.picture.medium,
+                src: employee.picture.large,
                 alt: fullName,
                 class: "card__avatar"
             })
