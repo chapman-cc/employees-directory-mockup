@@ -1,17 +1,26 @@
 
 
 $(document).ready(function () {
-
+    
     const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca "
-
+    
     $.getJSON(randomUserAPI, data => {
         const employees = data.results;
-
+        // console.log (employees);
         employees.forEach(employee => {
+            let $employeeTel = $("<p></p>").text(employee.cell);
+            let location = employee.location.street + ", " + employee.location.city + ", " + employee.location.postcode;
+            let $employeeLocation = $("<p></p>").text(location);
+            
+            let dob = employee.dob.date;
+            let $employeeBday = $("<p></p>").text(dob.slice(0, dob.indexOf("T")));
+
+            
+            
             // create employee name title
             let fullName = employee.name.first + " " + employee.name.last;
             // let fullName = getFullSentense(employee.name, " ", "title")
-        
+            
             let $employeeName = $("<h2></h2>").addClass('card__employeeName').text(fullName);
             // create employee email
             let $employeeEmail = $("<p></p>").addClass('card__employeeEmail').text(employee.email);
@@ -20,6 +29,7 @@ $(document).ready(function () {
             // create profile 
             let $cardProfile = $("<div></div>");
             $cardProfile.addClass('card__profile').append($employeeName).append($employeeEmail).append($employeeCity);
+            $cardProfile.append($employeeTel).append($employeeLocation).append($employeeBday);        // toggle this
             // create img
             let $img = $("<img>").attr({
                 src: employee.picture.medium,
