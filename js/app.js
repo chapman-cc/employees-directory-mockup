@@ -9,8 +9,8 @@ $(document).ready(function () {
 
         employees.forEach(employee => {
             // create employee name title
-            // let fullName = employee.name.first + " " + employee.name.last;
-            let fullName = getFullSentense(employee.name, " ", "title")
+            let fullName = employee.name.first + " " + employee.name.last;
+            // let fullName = getFullSentense(employee.name, " ", "title")
         
             let $employeeName = $("<h2></h2>").addClass('card__employeeName').text(fullName);
             // create employee email
