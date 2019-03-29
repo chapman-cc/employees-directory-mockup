@@ -65,6 +65,7 @@ body {
 }
 
 .card__employeeName {
+    color: black;
     font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 0.8em;
@@ -72,7 +73,7 @@ body {
 
 .card__employeeEmail,
 .card__employeeLocation {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: grey;
     margin-bottom: 0.5em;
     word-wrap: break-word
