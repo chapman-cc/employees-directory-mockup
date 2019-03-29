@@ -4,7 +4,7 @@
 
 * {
     box-sizing: border-box;
-    transition: all 500ms;
+    /* transition: all 500ms; */
 }
 
 body {
@@ -44,7 +44,8 @@ body {
 }
 
 .card:hover {
-    transform: scale(1.08)
+    transform: scale(1.08);
+    transition: transform 500ms;
 }
 
 /** ------------------------------
