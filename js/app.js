@@ -8,14 +8,14 @@ $(document).ready(function () {
         const employees = data.results;
         // console.log (employees);
         employees.forEach(employee => {
-            let $employeeTel = $("<p></p>").addClass("card__employeeDetails").text(employee.cell);
+            let $employeeTel = $("<p></p>").addClass("card__employeeDetails card--hidden").text(employee.cell);
             let location = employee.location.street + ", " + employee.location.city + ", " + employee.location.postcode;
-            let $employeeLocation = $("<p></p>").addClass("card__employeeDetails").text(location);
+            let $employeeLocation = $("<p></p>").addClass("card__employeeDetails card--hidden").text(location);
             
             let dob = employee.dob.date;
-            let $employeeBday = $("<p></p>").addClass("card__employeeDetails").text(dob.slice(0, dob.indexOf("T")));
+            let $employeeBday = $("<p></p>").addClass("card__employeeDetails card--hidden").text(dob.slice(0, dob.indexOf("T")));
 
-            let $cardSeperator = $("<div></div>").addClass("card__seperator");
+            let $cardSeperator = $("<div></div>").addClass("card__seperator card--hidden");
             
             // create employee name title
             let fullName = employee.name.first + " " + employee.name.last;
