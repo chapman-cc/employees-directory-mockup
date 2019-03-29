@@ -1,3 +1,12 @@
+function getFullSentense (obj, seperator, notThisKey) {
+    let sentense = "";
+    for (let key in obj) {
+        if (key !== notThisKey) {
+            sentense += obj[key] + seperator;
+        }
+    }
+    return sentense.slice(0, sentense.length - 1);
+}
 $(document).ready(function () {
 
     const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca "
@@ -7,7 +16,9 @@ $(document).ready(function () {
 
         employees.forEach(employee => {
             // create employee name title
-            let fullName = employee.name.first + " " + employee.name.last;
+            // let fullName = employee.name.first + " " + employee.name.last;
+            let fullName = getFullSentense(employee.name, " ", "title")
+        
             let $employeeName = $("<h2></h2>").addClass('card__employeeName').text(fullName);
             // create employee email
             let $employeeEmail = $("<p></p>").addClass('card__employeeEmail').text(employee.email);
