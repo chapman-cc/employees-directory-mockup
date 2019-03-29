@@ -1,12 +1,5 @@
-function getFullSentense (obj, seperator, notThisKey) {
-    let sentense = "";
-    for (let key in obj) {
-        if (key !== notThisKey) {
-            sentense += obj[key] + seperator;
-        }
-    }
-    return sentense.slice(0, sentense.length - 1);
-}
+
+
 $(document).ready(function () {
 
     const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca "
@@ -41,3 +34,17 @@ $(document).ready(function () {
         })
     }) // end of .getJSON
 }); // end of document ready 
+
+/** --------------------
+ * FUNCTIONS 
+-------------------- */
+
+// function getFullSentense (obj, seperator, notThisKey) {
+//     let sentense = "";
+//     for (let key in obj) {
+//         if (key !== notThisKey) {
+//             sentense += obj[key] + seperator;
+//         }
+//     }
+//     return sentense.slice(0, sentense.length - 1);
+// }
