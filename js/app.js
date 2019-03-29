@@ -15,7 +15,7 @@ $(document).ready(function () {
             let dob = employee.dob.date;
             let $employeeBday = $("<p></p>").addClass("card__employeeDetails").text(dob.slice(0, dob.indexOf("T")));
 
-            
+            let $cardSeperator = $("<div></div>").addClass("card__seperator");
             
             // create employee name title
             let fullName = employee.name.first + " " + employee.name.last;
@@ -29,7 +29,7 @@ $(document).ready(function () {
             // create profile 
             let $cardProfile = $("<div></div>");
             $cardProfile.addClass('card__profile').append($employeeName).append($employeeEmail).append($employeeCity);
-            $cardProfile.append($employeeTel).append($employeeLocation).append($employeeBday);        // toggle this
+            $cardProfile.append($cardSeperator).append($employeeTel).append($employeeLocation).append($employeeBday);        // toggle this
             // create img
             let $img = $("<img>").attr({
                 src: employee.picture.medium,

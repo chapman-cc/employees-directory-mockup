@@ -96,3 +96,11 @@ body {
 .card__profile {
     width: 60%
 }
+
+.card__seperator {
+    background-color: grey;
+    height: 2px;
+    width: 80%;
+    border-radius: 10px;
+    margin: 2em 0;
+}
