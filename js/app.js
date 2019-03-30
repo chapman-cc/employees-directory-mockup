@@ -1,60 +1,61 @@
+const directory = document.getElementById('directory');
 
-
-$(document).ready(function () {
-    
-    const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca "
-    
-    $.getJSON(randomUserAPI, data => {
+let xhr = new XMLHttpRequest();
+xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
         const employees = data.results;
-        // console.log (employees);
         employees.forEach(employee => {
-            let $employeeTel = $("<p></p>").addClass("card__employeeDetails card--hidden").text(employee.cell);
+            
+            let employeeTel = createHTMLNode("p", employee.cell, "card__employeeDetails card--hidden");
             let location = employee.location.street + ", " + employee.location.city + ", " + employee.location.postcode;
-            let $employeeLocation = $("<p></p>").addClass("card__employeeDetails card--hidden").text(location);
-            
-            let dob = employee.dob.date;
-            let $employeeBday = $("<p></p>").addClass("card__employeeDetails card--hidden").text(dob.slice(0, dob.indexOf("T")));
+            let employeeLocation = createHTMLNode("p", location, "card__employeeDetails card--hidden");
+            let dob = employee.dob.date.slice(0, 10);
+            let employeeBday = createHTMLNode('p', dob, "card__employeeDetails card--hidden");
+            let cardSeperator = createHTMLNode('div', null , "card__seperator card--hidden");
 
-            let $cardSeperator = $("<div></div>").addClass("card__seperator card--hidden");
-            
-            // create employee name title
             let fullName = employee.name.first + " " + employee.name.last;
-            // let fullName = getFullSentense(employee.name, " ", "title")
+            let employeeCity = createHTMLNode("p", employee.email, "card__employeeEmail");
+            let employeeEmail = createHTMLNode('p', employee.location.city, "card__employeeDetails");
+            let employeeName = createHTMLNode('h2', fullName, "card__employeeName");
+                        
+            let cardProfile = createHTMLNode("div", null, "card__profile");
+
+            cardProfile.appendChild(employeeName); // *TODO: try to create a function to append multiple children
+            cardProfile.appendChild(employeeEmail);
+            cardProfile.appendChild(employeeCity);
+            cardProfile.appendChild(cardSeperator);
+            cardProfile.appendChild(employeeTel);
+            cardProfile.appendChild(employeeLocation);
+            cardProfile.appendChild(employeeBday);
             
-            let $employeeName = $("<h2></h2>").addClass('card__employeeName').text(fullName);
-            // create employee email
-            let $employeeEmail = $("<p></p>").addClass('card__employeeEmail').text(employee.email);
-            // create employee location
-            let $employeeCity = $("<p></p>").addClass('card__employeeDetails').text(employee.location.city);
-            // create profile 
-            let $cardProfile = $("<div></div>");
-            $cardProfile.addClass('card__profile').append($employeeName).append($employeeEmail).append($employeeCity);
-            $cardProfile.append($cardSeperator).append($employeeTel).append($employeeLocation).append($employeeBday);        // toggle this
-            // create img
-            let $img = $("<img>").attr({
-                src: employee.picture.large,
-                alt: fullName,
-                class: "card__avatar"
-            })
-            // create card
-            let $card = $("<a></a>").addClass("card");
-            $card.append($img).append($cardProfile);
-            // append to directory
-            $('#directory').append($card)
+            let img = createHTMLNode('img', null, "card__avatar");
+            img.src = employee.picture.large;
+            img.alt = fullName;
+
+            let card = createHTMLNode('a', null, "card");
+            card.appendChild(img);
+            card.appendChild(cardProfile);
+
+            directory.appendChild(card);
+            
+
         })
-    }) // end of .getJSON
-}); // end of document ready 
+        
+        
+        
 
-/** --------------------
- * FUNCTIONS 
--------------------- */
+    }
+}
+xhr.open("GET", "https://randomuser.me/api/?results=12&nat=us,nz,au,ca", true);
+xhr.send();
+// const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
-// function getFullSentense (obj, seperator, notThisKey) {
-//     let sentense = "";
-//     for (let key in obj) {
-//         if (key !== notThisKey) {
-//             sentense += obj[key] + seperator;
-//         }
-//     }
-//     return sentense.slice(0, sentense.length - 1);
-// }
+
+
+function createHTMLNode (element, text, classNames) { //*TODO try use rest operator for classNames
+    let node = document.createElement(element);
+    node.className = classNames;
+    node.innerText = text;
+    return node;
+}
