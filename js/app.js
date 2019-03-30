@@ -1,4 +1,6 @@
+window.addEventListener("DOMContentLoaded", () => {
 
+    const directory = document.getElementById('directory');
 
 let xhr = new XMLHttpRequest();
 xhr.onreadystatechange = () => {
