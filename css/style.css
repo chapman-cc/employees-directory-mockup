@@ -1,5 +1,5 @@
 /** ------------------------------
-*  BASE STYLING
+* * BASE STYLING
 ------------------------------  */
 
 * {
@@ -18,7 +18,7 @@ body {
 }
 
 /** ------------------------------
-*  GRID STYLING
+* * GRID STYLING
 ------------------------------  */
 .directory {
     display: grid;
@@ -27,7 +27,7 @@ body {
 }
 
 /** ------------------------------
-*  CARD STYLING
+* * CARD STYLING
 ------------------------------  */
 
 .card {
@@ -49,7 +49,7 @@ body {
 }
 
 /** ------------------------------
-*  TEXT STYLING
+* * TEXT STYLING
 ------------------------------  */
 
 .title {
@@ -89,7 +89,7 @@ body {
 }
 
 /** ------------------------------
-*  IMG STYLING
+* * IMG STYLING
 ------------------------------  */
 
 .card__avatar {
@@ -103,7 +103,7 @@ body {
 
 
 /** ------------------------------
-*  STATE STYLING
+* * MODAL STYLING
 ------------------------------  */
 
 .card--hidden {
@@ -130,10 +130,8 @@ body {
     padding: 3em;
     
 }
-
-.card--selected>img { /* TARGET <IMG> INSIDE */
-    height: 100%;
-    width: 300px
+/* ! FOLLOWING STYLE ONLY WHEN .modal IS TURNED ON */
+.modal .card__avatar { 
 }
 .card--selected>div { /* TARGET <DIV> INSIDE */
     display: flex;
@@ -153,7 +151,7 @@ body {
     margin: 2em 0;
 }
 
-.card__shadow {
+/* * STYLING FOR .card__shadow*/
     position: absolute;
     top: 0;
     left: 0;
@@ -162,3 +160,4 @@ body {
     
     background-color: rgba(119, 119, 119, 0.8);
 }
+/* ! .card--hidden is put at bottom to ensure it overrides other classes */
