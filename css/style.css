@@ -108,7 +108,7 @@ body {
 ------------------------------  */
 
 
-.modal {
+.modal__card {
     position: fixed;
     top: 12%;
     left: calc(-1 * (340px / 2) + 50%);
@@ -128,12 +128,12 @@ body {
     
 }
 /* ! FOLLOWING STYLE ONLY WHEN .modal IS TURNED ON */
-.modal .card__avatar { 
+.modal__card .card__avatar { 
     height: 12em;
     width: 12em;
     margin-bottom: 2em
 }
-.modal .card__profile { 
+.modal__card .card__profile { 
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -143,7 +143,7 @@ body {
     margin-top: 2em;
     
 }
-.modal .card__seperator {
+.modal__card .card__seperator {
     display: block;
     background-color: grey;
     height: 2px;
@@ -152,7 +152,7 @@ body {
     margin: 2em 0;
 }
 
-.modal .card__employeeDetails {
+.modal__card .card__employeeDetails {
     display: block;
     text-align: center
 }

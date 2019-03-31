@@ -3,16 +3,16 @@ directory.addEventListener('click', evt => {
     while (target.className !== "card") {
         target = target.parentNode;
     }
-    modal.innerHTML = target.innerHTML;
-    toggleMultiClasses("card--hidden", modal, modalShadow);
+    modalCard.innerHTML = target.innerHTML;
+    toggleMultiClasses("card--hidden", modalCard, modalShadow);
 
 
 }, false)
 
-document.addEventListener('click', evt => {
-    if (evt.target.id === "modal" || evt.target.id === "modalShadow") {
-        modal.innerHTML = null;
-        toggleMultiClasses("card--hidden", modal, modalShadow);
+modal.addEventListener('click', evt => {
+    if (evt.target === modalCard || evt.target === modalShadow) {
+        modalCard.innerHTML = null;
+        toggleMultiClasses("card--hidden", modalCard, modalShadow);
     }
 })
 
@@ -21,3 +21,4 @@ function toggleMultiClasses(className, ...elements) {
         element.classList.toggle(className)
     })
 }
+

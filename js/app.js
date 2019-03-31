@@ -1,16 +1,15 @@
-window.addEventListener("DOMContentLoaded", () => {
+// --------------------------------
+// * VARIABLES
+// --------------------------------
+const directory = document.getElementById('directory');
+const modal = document.getElementById('modal');
+const modalCard = modal.querySelector('.modal__card');    
+const modalShadow = modal.querySelector(".modal__shadow");
+const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
-    const directory = document.getElementById('directory');
-    const modal = document.getElementById('modal');
-    const modalShadow = document.getElementById('modalShadow');
-    const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
-
-    getJSON('GET', randomUserAPI, "results")
-        .then(createEmployeeCard)
-        .then(appendToDirectory)
-        .catch(err => console.log(err));
-})
-
+// --------------------------------
+// * FUNCTIONS
+// --------------------------------
 /**
  * getJSON function is to use Promise to request a XMLHttpRequest and return the parsed JSON data 
  * 
@@ -103,3 +102,12 @@ const createHTMLNode = (innerText, element, ...classNames) => {
 const appendMultipleChild = (parent, ...children) => {
     children.forEach(child => parent.appendChild(child))
 };
+
+// --------------------------------
+// * MAIN CODE
+// --------------------------------
+
+getJSON('GET', randomUserAPI, "results")
+    .then(createEmployeeCard)
+    .then(appendToDirectory)
+    .catch(err => console.log(err));
