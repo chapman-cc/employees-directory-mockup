@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
 
     const directory = document.getElementById('directory');
+    const modal = document.getElementById('modal');
     const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
     let xhr = new XMLHttpRequest();
@@ -15,6 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
     };
     xhr.open("GET", randomUserAPI, true);
     xhr.send();
+
 })
 
 
