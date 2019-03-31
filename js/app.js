@@ -46,7 +46,7 @@ const createEmployeeCard = employees => {
         img.src = employee.picture.large;
         img.alt = fullName;
 
-        let card = createHTMLNode(null, 'a', "card");
+        let card = createHTMLNode(null, 'div', "card");
         appendMultipleChild(card, img, cardProfile);
 
         directory.appendChild(card);
