@@ -87,6 +87,10 @@ body {
     word-wrap: break-word
 }
 
+.card__employeeEmail { 
+    text-transform: lowercase;
+}
+
 /** ------------------------------
 *  IMG STYLING
 ------------------------------  */
