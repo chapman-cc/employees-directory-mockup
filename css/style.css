@@ -52,15 +52,17 @@ body {
 *  TEXT STYLING
 ------------------------------  */
 
-.title,
-.card__employeeName,
-.card__employeeEmail,
-.card__employeeDetails {
+.title {
+    font-size: 1.2em;
+    font-variant: small-caps;
     font-family: Helvetica, Arial, sans-serif;
+    margin: 2em 0 1em;
 }
 
 .card__employeeName, 
+.card__employeeEmail,
 .card__employeeDetails {
+    font-family: Helvetica, Arial, sans-serif;
     text-transform: capitalize;
 }
 
