@@ -17,6 +17,11 @@ window.addEventListener("DOMContentLoaded", () => {
     xhr.send();
 })
 
+
+/**
+ * 
+ * @param {array} employees is array pass from AJAX
+ */
 const createEmployeeCard = employees => {
     employees.forEach(employee => {
 
@@ -48,13 +53,25 @@ const createEmployeeCard = employees => {
     });
 };
 
+/**
+ * Create a HTML DOM Node 
+ * 
+ * @param {*} innerText texts set inside the HTML node
+ * @param {string} element tag set inside the HTML node
+ * @param  {...string} classNames a set of classes, can be multiple 
+ */
 function createHTMLNode(innerText, element, ...classNames) {
     let node = document.createElement(element);
     classNames.forEach(className => node.classList.add(className))
     node.innerText = innerText;
     return node;
 }
-
+/**
+ * To append multiple children to a parent DOM node, in order from top to bottom
+ * 
+ * @param {DOM} parent is the parent element to append from
+ * @param  {...DOM} children are childs that append to children 
+ */
 function appendMultipleChild(parent, ...children) {
     children.forEach(child => parent.appendChild(child))
 };
