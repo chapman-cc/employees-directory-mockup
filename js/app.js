@@ -2,6 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const directory = document.getElementById('directory');
     const modal = document.getElementById('modal');
+    const modalShadow = document.getElementById('modalShadow');
     const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
     let xhr = new XMLHttpRequest();
