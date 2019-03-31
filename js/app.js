@@ -4,9 +4,9 @@ window.addEventListener("DOMContentLoaded", () => {
     const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
     let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            const data = JSON.parse(xhr.responseText);
+    xhr.onload = function () {
+        if (this.status === 200) {
+            const data = JSON.parse(this.responseText);
             createEmployeeCard(data.results);
         }
     };
