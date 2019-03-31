@@ -10,7 +10,9 @@ window.addEventListener("DOMContentLoaded", () => {
             createEmployeeCard(data.results);
         }
     };
-
+    xhr.onerror = function () {
+        alert("Request Failed")
+    };
     xhr.open("GET", randomUserAPI, true);
     xhr.send();
 })
