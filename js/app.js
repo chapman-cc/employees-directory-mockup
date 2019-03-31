@@ -5,27 +5,36 @@ window.addEventListener("DOMContentLoaded", () => {
     const modalShadow = document.getElementById('modalShadow');
     const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
-    let xhr = new XMLHttpRequest();
+    createXMLRequest (randomUserAPI, createEmployeeCardsList)
+    
+})
+
+/**
+ * 
+ * @param {var} url is the API url 
+ * @param {callback} callback for XMLHttpRequest to run after loading
+ */
+const createXMLRequest = (url, callback) => {
+    const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (this.status === 200) {
             const data = JSON.parse(this.responseText);
-            createEmployeeCard(data.results);
+            callback(data.results);
         }
     };
     xhr.onerror = function () {
         alert("Request Failed")
     };
-    xhr.open("GET", randomUserAPI, true);
+    xhr.open("GET", url, true);
     xhr.send();
 
-})
-
+}
 
 /**
  * 
  * @param {array} employees is array pass from AJAX
  */
-const createEmployeeCard = employees => {
+const createEmployeeCardsList = employees => {
     employees.forEach(employee => {
 
         let employeeTel = createHTMLNode(employee.cell, "p", "card__employeeDetails");
