@@ -59,17 +59,11 @@ body {
     margin: 2em 0 1em;
 }
 
-.card__employeeName, 
+.card__employeeName,
 .card__employeeEmail,
 .card__employeeDetails {
     font-family: Helvetica, Arial, sans-serif;
     text-transform: capitalize;
-}
-
-.title {
-    font-size: 1.2em;
-    font-variant: small-caps;
-    margin: 2em 0 1em;
 }
 
 .card__employeeName {
@@ -79,7 +73,6 @@ body {
     margin-bottom: 0.8em;
 }
 
-.card__employeeEmail,
 .card__employeeDetails {
     font-size: 0.8em;
     color: grey;
@@ -89,6 +82,10 @@ body {
 
 .card__employeeEmail { 
     text-transform: lowercase;
+}
+
+.card__profile>:nth-child(3)~*{
+    display: none
 }
 
 /** ------------------------------
