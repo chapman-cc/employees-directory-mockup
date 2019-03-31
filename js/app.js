@@ -36,6 +36,7 @@ const getJSON = (method, url, key) => {
         xhr.send();
     })
 }
+
 /**
  * 
  * @param {array} employees is array pass from AJAX
