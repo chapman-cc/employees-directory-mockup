@@ -8,6 +8,7 @@
 }
 
 body {
+    min-width: 360px;
     position: relative;
 }
 
@@ -56,7 +57,7 @@ body {
     font-size: 1.2em;
     font-variant: small-caps;
     font-family: Helvetica, Arial, sans-serif;
-    margin: 2em 0 1em;
+    padding: 2em 0 1em;
 }
 
 .card__employeeName,
@@ -106,9 +107,6 @@ body {
 * * MODAL STYLING
 ------------------------------  */
 
-.card--hidden {
-    display: none;
-}
 
 .modal {
     position: fixed;
