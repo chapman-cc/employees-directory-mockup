@@ -27,8 +27,8 @@ const createEmployeeCard = employees => {
         let cardSeperator = createHTMLNode(null, 'div', "card__seperator", "card--hidden");
 
         let fullName = employee.name.first + " " + employee.name.last;
-        let employeeCity = createHTMLNode(employee.email, "p", "card__employeeEmail");
-        let employeeEmail = createHTMLNode(employee.location.city, 'p', "card__employeeDetails");
+        let employeeEmail = createHTMLNode(employee.email, "p", "card__employeeEmail");
+        let employeeCity = createHTMLNode(employee.location.city, 'p', "card__employeeDetails");
         let employeeName = createHTMLNode(fullName, 'h2', "card__employeeName");
 
         let cardProfile = createHTMLNode(null, "div", "card__profile");
