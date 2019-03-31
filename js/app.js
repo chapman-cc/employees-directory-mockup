@@ -34,7 +34,7 @@ const createEmployeeCard = employees => {
         let cardSeperator = createHTMLNode(null, 'div', "card__seperator");
 
         let fullName = employee.name.first + " " + employee.name.last;
-        let employeeEmail = createHTMLNode(employee.email, "p", "card__employeeEmail");
+        let employeeEmail = createHTMLNode(employee.email, "p", "card__employeeDetails", "card__employeeEmail");
         let employeeCity = createHTMLNode(employee.location.city, 'p', "card__employeeDetails");
         let employeeName = createHTMLNode(fullName, 'h2', "card__employeeName");
 
