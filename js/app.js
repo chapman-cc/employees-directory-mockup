@@ -60,7 +60,7 @@ const createEmployeeCard = employees => {
  * @param {string} element tag set inside the HTML node
  * @param  {...string} classNames a set of classes, can be multiple 
  */
-function createHTMLNode(innerText, element, ...classNames) {
+const createHTMLNode = (innerText, element, ...classNames) => {
     let node = document.createElement(element);
     classNames.forEach(className => node.classList.add(className))
     node.innerText = innerText;
@@ -72,6 +72,6 @@ function createHTMLNode(innerText, element, ...classNames) {
  * @param {DOM} parent is the parent element to append from
  * @param  {...DOM} children are childs that append to children 
  */
-function appendMultipleChild(parent, ...children) {
+const appendMultipleChild = (parent, ...children) => {
     children.forEach(child => parent.appendChild(child))
 };
