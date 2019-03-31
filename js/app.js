@@ -5,27 +5,43 @@ window.addEventListener("DOMContentLoaded", () => {
     const modalShadow = document.getElementById('modalShadow');
     const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (this.status === 200) {
-            const data = JSON.parse(this.responseText);
-            createEmployeeCard(data.results);
-        }
-    };
-    xhr.onerror = function () {
-        alert("Request Failed")
-    };
-    xhr.open("GET", randomUserAPI, true);
-    xhr.send();
-
+    getJSON('GET', randomUserAPI, "results")
+        .then(createEmployeeCard)
+        .then(appendToDirectory)
+        .catch(err => console.log(err));
 })
 
-
+/**
+ * getJSON function is to use Promise to request a XMLHttpRequest and return the parsed JSON data 
+ * 
+ * @param {string} method is "GET" or "POST"
+ * @param {*} url is server url or API url
+ * @param {*} key is object key to extract data from response 
+ */
+const getJSON = (method, url, key) => {
+    return new Promise(function (resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.onerror = function (error) {
+            reject(error);
+        }
+        xhr.onload = function () {
+            if (this.status === 200) {
+                let data = JSON.parse(this.response);
+                resolve(data[key]);
+            } else {
+                reject(this.statusText);
+            }
+        }
+        xhr.send();
+    })
+}
 /**
  * 
  * @param {array} employees is array pass from AJAX
  */
 const createEmployeeCard = employees => {
+    let cards = [];
     employees.forEach(employee => {
 
         let employeeTel = createHTMLNode(employee.cell, "p", "card__employeeDetails");
@@ -51,11 +67,19 @@ const createEmployeeCard = employees => {
 
         let card = createHTMLNode(null, 'div', "card");
         appendMultipleChild(card, img, cardProfile);
-
-        directory.appendChild(card);
+        cards.push(card)
     });
+    return cards
 };
-
+/**
+ * appendToDirectory is a function to append a set of array to the directory 
+ * @param {array} cards is an array of Nodes collection to append to directory
+ */
+const appendToDirectory = cards => {
+    cards.forEach(card =>
+        directory.appendChild(card)
+    )
+}
 /**
  * Create a HTML DOM Node 
  * 
