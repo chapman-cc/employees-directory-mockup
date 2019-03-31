@@ -18,13 +18,13 @@ window.addEventListener("DOMContentLoaded", () => {
 const createEmployeeCard = employees => {
     employees.forEach(employee => {
 
-        let employeeTel = createHTMLNode(employee.cell, "p", "card__employeeDetails", "card--hidden");
+        let employeeTel = createHTMLNode(employee.cell, "p", "card__employeeDetails");
 
         let location = employee.location.street + ", " + employee.location.city + ", " + employee.location.postcode;
-        let employeeLocation = createHTMLNode(location, "p", "card__employeeDetails", "card--hidden");
+        let employeeLocation = createHTMLNode(location, "p", "card__employeeDetails");
         let dob = employee.dob.date.slice(0, 10);
-        let employeeBday = createHTMLNode(dob, 'p', "card__employeeDetails", "card--hidden");
-        let cardSeperator = createHTMLNode(null, 'div', "card__seperator", "card--hidden");
+        let employeeBday = createHTMLNode(dob, 'p', "card__employeeDetails");
+        let cardSeperator = createHTMLNode(null, 'div', "card__seperator");
 
         let fullName = employee.name.first + " " + employee.name.last;
         let employeeEmail = createHTMLNode(employee.email, "p", "card__employeeEmail");
