@@ -4,15 +4,14 @@ directory.addEventListener('click', evt => {
         target = target.parentNode;
     }
     modalCard.innerHTML = target.innerHTML;
-    toggleMultiClasses("card--hidden", modalCard, modalShadow);
-
+    modal.classList.toggle('card--hidden')
 
 }, false)
 
 modal.addEventListener('click', evt => {
-    if (evt.target === modalCard || evt.target === modalShadow) {
+    if (evt.target === modalCard || evt.target === modal) {
         modalCard.innerHTML = null;
-        toggleMultiClasses("card--hidden", modalCard, modalShadow);
+        toggleMultiClasses("card--hidden", modal);
     }
 })
 
@@ -21,4 +20,3 @@ function toggleMultiClasses(className, ...elements) {
         element.classList.toggle(className)
     })
 }
-
