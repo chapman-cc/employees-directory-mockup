@@ -1,11 +1,23 @@
-// $(document).ready(() => {
-//     $("#directory").on('click', "a", toggleCardHidden);
+directory.addEventListener('click', evt => {
+    let target = evt.target;
+    while (target.className !== "card") {
+        target = target.parentNode;
+    }
+    modal.innerHTML = target.innerHTML;
+    toggleMultiClasses("card--hidden", modal, modalShadow);
 
-// })
 
+}, false)
 
-// function toggleCardHidden() {
-//     $(this).siblings("div").toggleClass("card--hidden"); /** TURN ON .card__shadow */
-//     $(this).toggleClass("card--selected"); /** TURN ON card--selected */
-//     $(this).children().children().toggleClass('card--hidden', false);
-// }
+document.addEventListener('click', evt => {
+    if (evt.target.id === "modal" || evt.target.id === "modalShadow") {
+        modal.innerHTML = null;
+        toggleMultiClasses("card--hidden", modal, modalShadow);
+    }
+})
+
+function toggleMultiClasses(className, ...elements) {
+    elements.forEach(element => {
+        element.classList.toggle(className)
+    })
+}
