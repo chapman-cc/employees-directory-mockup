@@ -96,8 +96,8 @@ const createHTMLNode = (innerText, element, ...classNames) => {
 /**
  * To append multiple children to a parent DOM node, in order from top to bottom
  * 
- * @param {DOM} parent is the parent element to append from
- * @param  {...DOM} children are childs that append to children 
+ * @param {DOM Node} parent is the parent element to append from
+ * @param  {...array} children are childs that append to children 
  */
 const appendMultipleChild = (parent, ...children) => {
     children.forEach(child => parent.appendChild(child))
@@ -107,7 +107,6 @@ const appendMultipleChild = (parent, ...children) => {
 // * MAIN CODE
 // * --------------------------------
 
-fetch(randomUserAPI,)
 getJSON('GET', randomUserAPI, "results")
     .then(createEmployeeCard)
     .then(appendToDirectory)
