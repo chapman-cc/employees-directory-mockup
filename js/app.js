@@ -107,8 +107,13 @@ const appendMultipleChild = (parent, ...children) => {
 // * MAIN CODE
 // * --------------------------------
 
-fetch(randomUserAPI,)
-getJSON('GET', randomUserAPI, "results")
-    .then(createEmployeeCard)
-    .then(appendToDirectory)
+fetch(randomUserAPI)
+    .then(response => response.json())
+    .then(data => data.results)
+    .then(employees => createEmployeeCard(employees))
+    .then(cards => appendMultipleChild(directory, ...cards))
     .catch(err => console.log(err));
+// getJSON('GET', randomUserAPI, "results")
+//     .then(createEmployeeCard)
+//     .then(appendToDirectory)
+//     .catch(err => console.log(err));
