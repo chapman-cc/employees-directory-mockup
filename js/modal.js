@@ -1,9 +1,8 @@
 directory.addEventListener('click', evt => {
-    let target = evt.target;
-    while (target.className !== "card") {
-        target = target.parentNode;
-    }
-    modalCard.innerHTML = target.innerHTML;
+    let card = evt.target.closest("div.card"); // select the nearest "div.card" element 
+    let cardIndex = card.dataset.in;
+    let modalHTML = createCard(employeesDirectory[cardIndex], "large");
+    modalCard.appendChild(modalHTML);  
     modal.classList.toggle('card--hidden')
 
 }, false)
