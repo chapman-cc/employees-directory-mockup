@@ -63,7 +63,7 @@ body {
     transition: transform 500ms;
 }
 
-.card:hover {
+.directory>.card:hover {
     transform: scale(1.08);
 }
 
