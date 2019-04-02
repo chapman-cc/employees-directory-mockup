@@ -77,33 +77,29 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-.card__employeeName,
-.card__employeeEmail,
-.card__employeeDetails {
+.card__name,
+.card__email,
+.card__details {
     font-family: Helvetica, Arial, sans-serif;
     text-transform: capitalize;
 }
 
-.card__employeeName {
+.card__name {
     color: black;
     font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 0.8em;
 }
 
-.card__employeeDetails {
+.card__details {
     font-size: 0.8em;
     color: grey;
     margin-bottom: 0.5em;
     word-wrap: break-word
 }
 
-.card__employeeEmail {
+.card__email {
     text-transform: lowercase;
-}
-
-.card__profile>:nth-child(3)~* {
-    display: none
 }
 
 /** ------------------------------
@@ -124,7 +120,6 @@ body {
 * * MODAL STYLING
 ------------------------------  */
 
-/* * STYLING FOR .modal*/
 .modal {
     display: block;
     width: 100vw;
@@ -136,10 +131,10 @@ body {
     background-color: rgba(119, 119, 119, 0.8);
 }
 
-.modal__card {
+.modal>.card {
     position: absolute;
     top: 12%;
-    left: calc(-1 * (340px / 2) + 50%);
+    left: calc(-1 * (340px / 2) + 50%); /* placing the modal in middle */
     margin: 0 auto;
 
     display: flex;
@@ -154,16 +149,17 @@ body {
     border: lightgrey 3px solid;
     border-radius: 20px;
     padding: 2em;
+    
 }
 
 /* ! FOLLOWING STYLE ONLY WHEN .modal IS TURNED ON */
-.modal__card .card__avatar {
+.modal .card__avatar {
     width: 100%;
     height: 100%;
     margin-bottom: 2em
 }
 
-.modal__card .card__profile {
+.modal .card__profile {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -174,7 +170,7 @@ body {
 
 }
 
-.modal__card .card__seperator {
+.modal .card__line {
     display: block;
     background-color: grey;
     height: 2px;
@@ -183,8 +179,7 @@ body {
     margin: 2em 0;
 }
 
-.modal__card .card__employeeDetails {
-    display: block;
+.modal .card__details {
     text-align: center
 }
 

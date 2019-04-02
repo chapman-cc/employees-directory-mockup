@@ -42,22 +42,22 @@ const getJSON = (method, url) => {
  * @param {string} size between "large" or "medium (default)"
  */
 const createCard = (emp, size = "medium") => {
-    let tel = createHTMLNode(emp.cell, "p", "card__employeeDetails");
+    let tel = createHTMLNode(emp.cell, "p", "card__details");
     let location = emp.location.street + ", " + emp.location.city + ", " + emp.location.postcode;
-    let address = createHTMLNode(location, "p", "card__employeeDetails");
+    let address = createHTMLNode(location, "p", "card__details");
     let dob = emp.dob.date.slice(0, 10);
-    let Bday = createHTMLNode(dob, 'p', "card__employeeDetails");
-    let seperator = createHTMLNode(null, 'div', "card__seperator");
+    let Bday = createHTMLNode(dob, 'p', "card__details");
+    let line = createHTMLNode(null, 'div', "card__line");
 
     let fullName = emp.name.first + " " + emp.name.last;
-    let email = createHTMLNode(emp.email, "p", "card__employeeDetails", "card__employeeEmail");
-    let city = createHTMLNode(emp.location.city, 'p', "card__employeeDetails");
-    let name = createHTMLNode(fullName, 'h2', "card__employeeName");
+    let email = createHTMLNode(emp.email, "p", "card__details", "card__email");
+    let city = createHTMLNode(emp.location.city, 'p', "card__details");
+    let name = createHTMLNode(fullName, 'h2', "card__name");
 
         let cardProfile = createHTMLNode(null, "div", "card__profile");
 
     switch (size) {
-        case "large": appendMultipleChild(cardProfile, name, email, city, seperator, tel, address, Bday); break;
+        case "large": appendMultipleChild(cardProfile, name, email, city, line, tel, address, Bday); break;
         case "medium": appendMultipleChild(cardProfile, name, email, city); break;
     }
 
