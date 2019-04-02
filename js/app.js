@@ -102,8 +102,9 @@ fetch(randomUserAPI)
     .then(data => data.results)
     .then(employees => createEmployeeCard(employees))
     .then(cards => appendMultipleChild(directory, ...cards))
-    .catch(err => console.log(err));
+    .catch(err => console.log("There is an error in the code: " + err));
 // getJSON('GET', randomUserAPI, "results")
 //     .then(data => data.results)
 //     .then(createEmployeeCard)
 //     .then(cards => appendMultipleChild(directory, ...cards))
+//     .catch(err => console.log("There is an error in the code"));
