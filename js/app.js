@@ -7,7 +7,7 @@ const modalCard = modal.querySelector('.modal__card');
 const modalShadow = modal.querySelector(".modal__shadow");
 const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
-let employees = [];
+let employeesDirectory = [];
 
 // * --------------------------------
 // * FUNCTIONS
@@ -42,15 +42,15 @@ const getJSON = (method, url) => {
  */
 const createEmployeeCard = employees => {
     let cards = [];
+    let i = 0;
     employees.forEach(employee => {
 
-        let employeeTel = createHTMLNode(employee.cell, "p", "card__employeeDetails");
-
-        let location = employee.location.street + ", " + employee.location.city + ", " + employee.location.postcode;
-        let employeeLocation = createHTMLNode(location, "p", "card__employeeDetails");
-        let dob = employee.dob.date.slice(0, 10);
-        let employeeBday = createHTMLNode(dob, 'p', "card__employeeDetails");
-        let cardSeperator = createHTMLNode(null, 'div', "card__seperator");
+        // let employeeTel = createHTMLNode(employee.cell, "p", "card__employeeDetails");
+        // let location = employee.location.street + ", " + employee.location.city + ", " + employee.location.postcode;
+        // let employeeLocation = createHTMLNode(location, "p", "card__employeeDetails");
+        // let dob = employee.dob.date.slice(0, 10);
+        // let employeeBday = createHTMLNode(dob, 'p', "card__employeeDetails");
+        // let cardSeperator = createHTMLNode(null, 'div', "card__seperator");
 
         let fullName = employee.name.first + " " + employee.name.last;
         let employeeEmail = createHTMLNode(employee.email, "p", "card__employeeDetails", "card__employeeEmail");
@@ -59,7 +59,8 @@ const createEmployeeCard = employees => {
 
         let cardProfile = createHTMLNode(null, "div", "card__profile");
 
-        appendMultipleChild(cardProfile, employeeName, employeeEmail, employeeCity, cardSeperator, employeeTel, employeeLocation, employeeBday);
+        // appendMultipleChild(cardProfile, employeeName, employeeEmail, employeeCity, cardSeperator, employeeTel, employeeLocation, employeeBday);
+        appendMultipleChild(cardProfile, employeeName, employeeEmail, employeeCity);
 
         let img = createHTMLNode(null, 'img', "card__avatar");
         img.src = employee.picture.large;
@@ -67,6 +68,8 @@ const createEmployeeCard = employees => {
 
         let card = createHTMLNode(null, 'div', "card");
         appendMultipleChild(card, img, cardProfile);
+        card.dataset.index = i;
+        i ++ ;
         cards.push(card)
     });
     return cards
@@ -102,7 +105,11 @@ const appendMultipleChild = (parent, ...children) => {
 fetch(randomUserAPI)
     .then(response => response.json())
     .then(data => data.results)
-    .then(data => employees = data)
+    .then(data => {
+        for (let key in data) data[key].index = key;
+        employeesDirectory = data;
+        return data;
+    })
     .then(employees => createEmployeeCard(employees))
     .then(cards => appendMultipleChild(directory, ...cards))
     .catch(err => console.log("There is an error in the code: " + err));
