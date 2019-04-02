@@ -98,19 +98,22 @@ const appendMultipleChild = (parent, ...children) => {
     children.forEach(child => parent.appendChild(child))
 };
 
+/**
+ * add an ascending index value to the HTML collection
+ * 
+ * @param {DOM} datas is the HTML collection
+ * @param {string} name is the key inside the dataset
+ */
+const add2Dataset = (datas, name) => {
+    for (let key in datas) datas[key].dataset[name] = key;
+    return datas;
+}
 // * --------------------------------
 // * MAIN CODE
 // * --------------------------------
 
 fetch(randomUserAPI)
-    .then(response => response.json())
-    .then(data => data.results)
-    .then(data => {
-        for (let key in data) data[key].index = key;
-        employeesDirectory = data;
-        return data;
-    })
-    .then(employees => createEmployeeCard(employees))
+    .then(cards => add2Dataset(cards, "in"))                // add an obj.dataset.in = 0 value 
     .then(cards => appendMultipleChild(directory, ...cards))
     .catch(err => console.log("There is an error in the code: " + err));
 // getJSON('GET', randomUserAPI, "results")
