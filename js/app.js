@@ -35,41 +35,49 @@ const getJSON = (method, url) => {
         xhr.send();
     })
 }
+/**
+ * create an HTML card, for both Large and Medium size 
+ * 
+ * @param {object} emp pass in employee object to construct a HTML card 
+ * @param {string} size between "large" or "medium (default)"
+ */
+const createCard = (emp, size = "medium") => {
+    let tel = createHTMLNode(emp.cell, "p", "card__employeeDetails");
+    let location = emp.location.street + ", " + emp.location.city + ", " + emp.location.postcode;
+    let address = createHTMLNode(location, "p", "card__employeeDetails");
+    let dob = emp.dob.date.slice(0, 10);
+    let Bday = createHTMLNode(dob, 'p', "card__employeeDetails");
+    let seperator = createHTMLNode(null, 'div', "card__seperator");
+
+    let fullName = emp.name.first + " " + emp.name.last;
+    let email = createHTMLNode(emp.email, "p", "card__employeeDetails", "card__employeeEmail");
+    let city = createHTMLNode(emp.location.city, 'p', "card__employeeDetails");
+    let name = createHTMLNode(fullName, 'h2', "card__employeeName");
+
+        let cardProfile = createHTMLNode(null, "div", "card__profile");
+
+    switch (size) {
+        case "large": appendMultipleChild(cardProfile, name, email, city, seperator, tel, address, Bday); break;
+        case "medium": appendMultipleChild(cardProfile, name, email, city); break;
+    }
+
+        let img = createHTMLNode(null, 'img', "card__avatar");
+    img.src = emp.picture[size];
+        img.alt = fullName;
+
+        let card = createHTMLNode(null, 'div', "card");
+        appendMultipleChild(card, img, cardProfile);
+    return card;
+}
 
 /**
  * 
  * @param {array} employees is array pass from AJAX
  */
-const createEmployeeCard = employees => {
+const createEmployeeCardSet = (employees, size = "medium") => {
     let cards = [];
-    let i = 0;
     employees.forEach(employee => {
-
-        // let employeeTel = createHTMLNode(employee.cell, "p", "card__employeeDetails");
-        // let location = employee.location.street + ", " + employee.location.city + ", " + employee.location.postcode;
-        // let employeeLocation = createHTMLNode(location, "p", "card__employeeDetails");
-        // let dob = employee.dob.date.slice(0, 10);
-        // let employeeBday = createHTMLNode(dob, 'p', "card__employeeDetails");
-        // let cardSeperator = createHTMLNode(null, 'div', "card__seperator");
-
-        let fullName = employee.name.first + " " + employee.name.last;
-        let employeeEmail = createHTMLNode(employee.email, "p", "card__employeeDetails", "card__employeeEmail");
-        let employeeCity = createHTMLNode(employee.location.city, 'p', "card__employeeDetails");
-        let employeeName = createHTMLNode(fullName, 'h2', "card__employeeName");
-
-        let cardProfile = createHTMLNode(null, "div", "card__profile");
-
-        // appendMultipleChild(cardProfile, employeeName, employeeEmail, employeeCity, cardSeperator, employeeTel, employeeLocation, employeeBday);
-        appendMultipleChild(cardProfile, employeeName, employeeEmail, employeeCity);
-
-        let img = createHTMLNode(null, 'img', "card__avatar");
-        img.src = employee.picture.large;
-        img.alt = fullName;
-
-        let card = createHTMLNode(null, 'div', "card");
-        appendMultipleChild(card, img, cardProfile);
-        card.dataset.index = i;
-        i ++ ;
+        let card = createCard(employee, size) ;
         cards.push(card)
     });
     return cards
@@ -113,11 +121,10 @@ const add2Dataset = (datas, name) => {
 // * --------------------------------
 
 fetch(randomUserAPI)
+    .then(response => response.json())                      // parse JSON
+    .then(data => data.results)                             // extract results from Object //todo add full name and dob to the data 
+    .then(data => employeesDirectory = data)                // store info into const employeesDirectory
+    .then(employees => createEmployeeCardSet(employees))    // create HTML collection of cards
     .then(cards => add2Dataset(cards, "in"))                // add an obj.dataset.in = 0 value 
     .then(cards => appendMultipleChild(directory, ...cards))
     .catch(err => console.log("There is an error in the code: " + err));
-// getJSON('GET', randomUserAPI, "results")
-//     .then(data => data.results)
-//     .then(createEmployeeCard)
-//     .then(cards => appendMultipleChild(directory, ...cards))
-//     .catch(err => console.log("There is an error in the code"));
