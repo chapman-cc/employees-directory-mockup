@@ -12,12 +12,11 @@ const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 // * --------------------------------
 /**
  * getJSON function is to use Promise to request a XMLHttpRequest and return the parsed JSON data 
- * 
+ * ! this function is not used, its only existance is to let me try out promise syntax
  * @param {string} method is "GET" or "POST"
  * @param {*} url is server url or API url
- * @param {*} key is object key to extract data from response 
  */
-const getJSON = (method, url, key) => {
+const getJSON = (method, url) => {
     return new Promise(function (resolve, reject) {
         let xhr = new XMLHttpRequest();
         xhr.open(method, url);
@@ -26,8 +25,7 @@ const getJSON = (method, url, key) => {
         }
         xhr.onload = function () {
             if (this.status === 200) {
-                let data = JSON.parse(this.response);
-                resolve(data[key]);
+                resolve (JSON.parse(this.response));
             } else {
                 reject(this.statusText);
             }
@@ -106,6 +104,6 @@ fetch(randomUserAPI)
     .then(cards => appendMultipleChild(directory, ...cards))
     .catch(err => console.log(err));
 // getJSON('GET', randomUserAPI, "results")
+//     .then(data => data.results)
 //     .then(createEmployeeCard)
-//     .then(appendToDirectory)
-//     .catch(err => console.log(err));
+//     .then(cards => appendMultipleChild(directory, ...cards))
