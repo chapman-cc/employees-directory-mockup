@@ -7,6 +7,8 @@ const modalCard = modal.querySelector('.modal__card');
 const modalShadow = modal.querySelector(".modal__shadow");
 const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
+let employees = [];
+
 // * --------------------------------
 // * FUNCTIONS
 // * --------------------------------
@@ -100,6 +102,7 @@ const appendMultipleChild = (parent, ...children) => {
 fetch(randomUserAPI)
     .then(response => response.json())
     .then(data => data.results)
+    .then(data => employees = data)
     .then(employees => createEmployeeCard(employees))
     .then(cards => appendMultipleChild(directory, ...cards))
     .catch(err => console.log("There is an error in the code: " + err));
