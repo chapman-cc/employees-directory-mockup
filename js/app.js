@@ -71,15 +71,7 @@ const createEmployeeCard = employees => {
     });
     return cards
 };
-/**
- * appendToDirectory is a function to append a set of array to the directory 
- * @param {array} cards is an array of Nodes collection to append to directory
- */
-const appendToDirectory = cards => {
-    cards.forEach(card =>
-        directory.appendChild(card)
-    )
-}
+
 /**
  * Create a HTML DOM Node 
  * 
