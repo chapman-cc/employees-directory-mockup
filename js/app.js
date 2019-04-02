@@ -3,8 +3,7 @@
 // * --------------------------------
 const directory = document.getElementById('directory');
 const modal = document.getElementById('modal');
-const modalCard = modal.querySelector('.modal__card');
-const modalShadow = modal.querySelector(".modal__shadow");
+// const modalShadow = modal.querySelector(".modal__shadow");
 const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
 let employeesDirectory = [];
@@ -54,19 +53,19 @@ const createCard = (emp, size = "medium") => {
     let city = createHTMLNode(emp.location.city, 'p', "card__details");
     let name = createHTMLNode(fullName, 'h2', "card__name");
 
-        let cardProfile = createHTMLNode(null, "div", "card__profile");
+    let cardProfile = createHTMLNode(null, "div", "card__profile");
 
     switch (size) {
         case "large": appendMultipleChild(cardProfile, name, email, city, line, tel, address, Bday); break;
         case "medium": appendMultipleChild(cardProfile, name, email, city); break;
     }
 
-        let img = createHTMLNode(null, 'img', "card__avatar");
+    let img = createHTMLNode(null, 'img', "card__avatar");
     img.src = emp.picture[size];
-        img.alt = fullName;
+    img.alt = fullName;
 
-        let card = createHTMLNode(null, 'div', "card");
-        appendMultipleChild(card, img, cardProfile);
+    let card = createHTMLNode(null, 'div', "card");
+    appendMultipleChild(card, img, cardProfile);
     return card;
 }
 
