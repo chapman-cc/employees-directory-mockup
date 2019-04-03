@@ -48,10 +48,9 @@ const createCard = (emp, size = "medium") => {
     let Bday = createHTMLNode(dob, 'p', "card__details");
     let line = createHTMLNode(null, 'div', "card__line");
 
-    let fullName = emp.name.first + " " + emp.name.last;
     let email = createHTMLNode(emp.email, "p", "card__details", "card__email");
     let city = createHTMLNode(emp.location.city, 'p', "card__details");
-    let name = createHTMLNode(fullName, 'h2', "card__name");
+    let name = createHTMLNode(emp.name.fullName, 'h2', "card__name");
 
     let cardProfile = createHTMLNode(null, "div", "card__profile");
 
@@ -62,7 +61,7 @@ const createCard = (emp, size = "medium") => {
 
     let img = createHTMLNode(null, 'img', "card__avatar");
     img.src = emp.picture[size];
-    img.alt = fullName;
+    img.alt = emp.name.fullName;
 
     let card = createHTMLNode(null, 'div', "card");
     appendMultipleChild(card, img, cardProfile);
@@ -121,7 +120,17 @@ const add2Dataset = (datas, name) => {
 
 fetch(randomUserAPI)
     .then(response => response.json())                      // parse JSON
-    .then(data => data.results)                             // extract results from Object //todo add full name and dob to the data 
+    .then(datas => datas.results)                           // extract results from Object //todo add full name and dob to the datas 
+    .then(datas => {                                        // this add a getter method for fullname later use 
+        for (let data of datas) {
+            Object.defineProperty(data.name, "fullName", {
+                get() {
+                    return `${this.first} ${this.last}`
+                }
+            })
+        }
+        return datas;
+    })
     .then(data => employeesDirectory = data)                // store info into const employeesDirectory
     .then(employees => createEmployeeCardSet(employees))    // create HTML collection of cards
     .then(cards => add2Dataset(cards, "in"))                // add an obj.dataset.in = 0 value 
