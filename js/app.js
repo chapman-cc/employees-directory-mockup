@@ -5,8 +5,8 @@ const directory = document.getElementById('directory');
 const searchBar = document.getElementById('searchBar');
 
 const modal = document.getElementById('modal');
-const modalLeft = modal.querySelector("modal__leftArrow");
-const modalRight = modal.querySelector("modal__rightArrow");
+// const modalLeft = modal.querySelector("modal__leftArrow");
+// const modalRight = modal.querySelector("modal__rightArrow");
 
 const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
