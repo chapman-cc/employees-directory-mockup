@@ -3,7 +3,7 @@
 // * --------------------------------
 const directory = document.getElementById('directory');
 const modal = document.getElementById('modal');
-// const modalShadow = modal.querySelector(".modal__shadow");
+const searchBar = document.getElementById('searchBar');
 const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
 let employeesDirectory = [];
