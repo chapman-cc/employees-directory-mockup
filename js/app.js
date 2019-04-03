@@ -2,8 +2,12 @@
 // * VARIABLES
 // * --------------------------------
 const directory = document.getElementById('directory');
-const modal = document.getElementById('modal');
 const searchBar = document.getElementById('searchBar');
+
+const modal = document.getElementById('modal');
+const modalLeft = modal.querySelector("modal__leftArrow");
+const modalRight = modal.querySelector("modal__rightArrow");
+
 const randomUserAPI = "https://randomuser.me/api/?results=12&nat=us,nz,au,ca";
 
 let employeesDirectory = [];
@@ -120,7 +124,7 @@ const add2Dataset = (datas, name) => {
 
 fetch(randomUserAPI)
     .then(response => response.json())                      // parse JSON
-    .then(datas => datas.results)                           // extract results from Object //todo add full name and dob to the datas 
+    .then(datas => datas.results)                           // extract results from Object 
     .then(datas => {                                        // this add a getter method for fullname later use 
         for (let data of datas) {
             Object.defineProperty(data.name, "fullName", {

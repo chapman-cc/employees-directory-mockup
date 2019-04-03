@@ -185,8 +185,21 @@ body {
 
 /* ! ---------- END ---------- */
 
+.modal__leftArrow,
+.modal__rightArrow {
+    position: absolute;
+    top: 45%;
+    cursor: pointer;
+    transform: scale(1.5)
+}
+.modal__leftArrow {
+    transform: scale(1.5) rotate(180deg);
+    left: 25%
+}
 
-
+.modal__rightArrow {
+    right: 25%
+}
 
 /* ! .card--hidden is put at bottom to ensure it overrides other classes */
 .card--hidden {
