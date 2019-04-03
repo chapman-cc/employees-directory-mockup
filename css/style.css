@@ -121,35 +121,50 @@ body {
 ------------------------------  */
 
 .modal {
-    display: block;
     width: 100vw;
     height: 100vh;
+    
     position: fixed;
     top: 0;
     left: 0;
 
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    
     background-color: rgba(119, 119, 119, 0.8);
 }
 
 .modal>.card {
-    position: absolute;
-    top: 12%;
-    left: calc(-1 * (340px / 2) + 50%); /* placing the modal in middle */
-    margin: 0 auto;
-
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
     align-items: center;
 
-    width: 340px;
-    /* todo try max width but fit all items*/
+    min-width: 400px;
+    max-height: 750px;
     height: auto;
     background-color: white;
     border: lightgrey 3px solid;
     border-radius: 20px;
     padding: 2em;
+    margin: 1em;
+    position: relative;
+}
+
+.modal>.card::after {
+    content: "click grey area to exit";
     
+    position: absolute;
+    bottom: -3%;
+
+    color: lightgrey;
+    font-family: sans-serif;
+    font-size: 0.7em;
+    text-transform: capitalize;
+
+    cursor: pointer;
 }
 
 /* ! FOLLOWING STYLE ONLY WHEN .modal IS TURNED ON */
@@ -187,19 +202,13 @@ body {
 
 .modal__leftArrow,
 .modal__rightArrow {
-    position: absolute;
-    top: 45%;
     cursor: pointer;
     transform: scale(1.5)
 }
 .modal__leftArrow {
     transform: scale(1.5) rotate(180deg);
-    left: 25%
 }
 
-.modal__rightArrow {
-    right: 25%
-}
 
 /* ! .card--hidden is put at bottom to ensure it overrides other classes */
 .card--hidden {
