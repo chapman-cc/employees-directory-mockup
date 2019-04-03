@@ -153,11 +153,11 @@ body {
     position: relative;
 }
 
-.modal>.card::after {
-    content: "click grey area to exit";
+.modal>.card:hover::after {
+    content: "click outside to exit";
     
     position: absolute;
-    bottom: -3%;
+    bottom: 1%;
 
     color: lightgrey;
     font-family: sans-serif;
